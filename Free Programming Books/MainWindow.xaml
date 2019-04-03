@@ -1,0 +1,47 @@
+﻿<Window xmlns:Design="clr-namespace:Free_Programming_Books.Design"  x:Class="Free_Programming_Books.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Free_Programming_Books"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450">
+    <Window.DataContext>
+        <local:Search />
+    </Window.DataContext>
+    <Grid>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Search">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="textBoxSearch" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" UseLayoutRounding="False" HorizontalScrollBarVisibility="Disabled" Padding="0" Width="675" ToolTip="Search Books (e.g. sql)" HorizontalAlignment="Left" FontSize="14.667" TextChanged="textBoxSearch_TextChanged" />
+                            <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="buttonSearch_Click"/>
+                        </StackPanel>
+                        <ProgressBar x:Name="progressBar" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="3" IsIndeterminate="True" Visibility="Hidden"/>
+                    </Grid>
+                    <ListView x:Name="bookListView" Grid.Row="1" ItemsSource="{Binding BooksItems}" SelectionChanged="bookListView_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Design:BookView />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Design:PageController x:Name="pageController" Grid.Row="2" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Category">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Download">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Design:BookDetailedView x:Name="bookDetailedView" Visibility="Collapsed" />
+    </Grid>
+</Window>

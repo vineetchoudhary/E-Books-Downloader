@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Free_Programming_Books.Design.BookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Free_Programming_Books.Design"
+             mc:Ignorable="d" 
+             d:DesignHeight="125" d:DesignWidth="740">
+    <Grid Width="740">
+        <Image x:Name="bookImage" Source="{Binding Image}" HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="100" Stretch="Fill"/>
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="105,-5,10,0">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="labelName" Content="{Binding Title}" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal">
+                <Label x:Name="ISBN" Content="ISBN" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="labelISBN" Content="{Binding ISBN}" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel  Orientation="Vertical">
+                <Label x:Name="Subtitle" Content="Subtitle" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBlock x:Name="labelSubtitle" Text="{Binding SubTitle}" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Margin="5,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
